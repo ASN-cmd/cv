@@ -29,22 +29,6 @@
 \documentclass[a4paper,12pt]{article}
 
 %----------------------------------------------------------------------------------------
-%	FONT
-%----------------------------------------------------------------------------------------
-
-% % fontspec allows you to use TTF/OTF fonts directly
-% \usepackage{fontspec}
-% \defaultfontfeatures{Ligatures=TeX}
-
-% % modified for ShareLaTeX use
-% \setmainfont[
-% SmallCapsFont = Fontin-SmallCaps.otf,
-% BoldFont = Fontin-Bold.otf,
-% ItalicFont = Fontin-Italic.otf
-% ]
-% {Fontin.otf}
-
-%----------------------------------------------------------------------------------------
 %	PACKAGES
 %----------------------------------------------------------------------------------------
 \usepackage{url}
@@ -81,22 +65,13 @@
 \titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
 \titlespacing{\section}{0pt}{10pt}{10pt}
 
-%for publications
-\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
-
 %Setup hyperref package, and colours for links
 \usepackage[unicode, draft=false]{hyperref}
 \definecolor{linkcolour}{rgb}{0,0.2,0.6}
 \hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
-\addbibresource{citations.bib}
-\setlength\bibitemsep{1em}
 
 %for social icons
 \usepackage{fontawesome5}
-
-%debug page outer frames
-%\usepackage{showframe}
-
 
 % job listing environments
 \newenvironment{jobshort}[2]
@@ -121,8 +96,6 @@
     \end{minipage}    
     }
 
-
-
 %----------------------------------------------------------------------------------------
 %	BEGIN DOCUMENT
 %----------------------------------------------------------------------------------------
@@ -135,48 +108,71 @@
 %	TITLE
 %----------------------------------------------------------------------------------------
 
-% \begin{tabularx}{\linewidth}{ @{}X X@{} }
-% \huge{Your Name}\vspace{2pt} & \hfill \emoji{incoming-envelope} email@email.com \\
-% \raisebox{-0.05\height}\faGithub\ username \ | \
-% \raisebox{-0.00\height}\faLinkedin\ username \ | \ \raisebox{-0.05\height}\faGlobe \ mysite.com  & \hfill \emoji{calling} number
-% \end{tabularx}
-
 \begin{tabularx}{\linewidth}{@{} C @{}}
-\Huge{Your Name} \\[7.5pt]
-\href{https://github.com/username}{\raisebox{-0.05\height}\faGithub\ username} \ $|$ \ 
-\href{https://linkedin.com/in/username}{\raisebox{-0.05\height}\faLinkedin\ username} \ $|$ \ 
-\href{https://mysite.com}{\raisebox{-0.05\height}\faGlobe \ mysite.com} \ $|$ \ 
-\href{mailto:email@mysite.com}{\raisebox{-0.05\height}\faEnvelope \ email@mysite.com} \ $|$ \ 
-\href{tel:+000000000000}{\raisebox{-0.05\height}\faMobile \ +00.00.000.000} \\
+\Huge{ARYAN SUKHADAN NAIR} \\[7.5pt]
+\href{https://github.com/username}{\raisebox{-0.05\height}\faGithub\ Github} \ $|$ \ 
+\href{https://linkedin.com/in/username}{\raisebox{-0.05\height}\faLinkedin\ LinkedIn} \ $|$ \ 
+\href{mailto:nairaryan135@gmail.com}{\raisebox{-0.05\height}\faEnvelope \ nairaryan135@gmail.com} \ $|$ \ 
+\href{tel:+919321442430}{\raisebox{-0.05\height}\faMobile \ (+91) 9321442430} \\
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
 % EXPERIENCE SECTIONS
 %----------------------------------------------------------------------------------------
 
-%Interests/ Keywords/ Summary
+%Summary
 \section{Summary}
-This CV is automatically generated and deployed using the \href{https://github.com/jitinnair1/autoCV}{autoCV} template along with GitHub Actions such that a new version of the CV is compiled, published and ready for use when the cv.tex file is updated. For details, \href{https://github.com/jitinnair1/autoCV}{click here}.
+Full Stack Developer with expertise in machine learning and web development. Proven track record in developing AI-powered healthcare solutions and scalable web applications. Experienced in leading technical teams and delivering high-impact projects with measurable results.
 
 %Experience
 \section{Work Experience}
 
-\begin{jobshort}{Designation}{Jan 2021 - present}
-long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width
-\end{jobshort}
-
-
-\begin{joblong}{Designation}{Mar 2019 - Jan 2021}
-\item long long line of blah blah that will wrap when the table fills the column width
-\item again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah. again, long long line of blah blah that will wrap when the table fills the column width but this time even more long long line of blah blah
+\begin{joblong}{Research Intern}{July 2024 - June 2025}
+\textbf{IISER Mohali} \hfill Kalyan, Maharashtra
+\item Developed a machine learning-based system using Random Forest, XGBoost, and SHAP to predict CVD risk with 85–90\% accuracy
+\item Processed 1,300+ patient records, reducing assessment time by 60\%
+\item Integrated Gemini API for automated scoring and report interpretation
+\item Delivered a user-friendly dashboard with chatbot support, ensuring affordability and accessibility for widespread adoption in India
 \end{joblong}
-  
+
+\begin{joblong}{Technical Head CSI FCRIT}{July 2024 - Present}
+\textbf{Fr.C. Rodrigues Institute of Technology, Vashi}
+\item Developing and maintaining the official website for CSI, enhancing user engagement by implementing interactive features that led to a 30\% increase in site traffic over six months
+\item Developed a dynamic and responsive hackathon website using Next.js and Tailwind CSS, ensuring a seamless user experience with fast performance and modern UI design
+\end{joblong}
+
+\begin{joblong}{Project Intern}{July 2025 - Present}
+\textbf{IISER x Suraj Informatics}
+\item Working on a YOLOv11-based smart vision system for real-time baggage counting
+\item Integrating ByteTrack, zone-based logic, and anomaly detection with a live dashboard to enhance accuracy and scalability for deployment in crowded environments
+\end{joblong}
+
+\begin{joblong}{Project Lead}{July 2025 - Present}
+\textbf{Sport Mentoring Infusion - NGO}
+\item Leading development of Swabhav360, a unified digital platform for tracking child behavior, sports progress, volunteer impact, and analytics
+\item Built using React, Node.js, Firebase, with secure user roles, gamification, and real-time dashboards for impactful deployment at SMI's national event
+\end{joblong}
+
 %Projects
 \section{Projects}
 
 \begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{Some Project} & \hfill \href{https://some-link.com}{Link to Demo} \\[3.75pt]
-\multicolumn{2}{@{}X@{}}{long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width long long line of blah blah that will wrap when the table fills the column width}  \\
+\textbf{Medisage - CVD Risk Calculator with Report Analysis} & \hfill \href{https://github.com}{GitHub} \\[3.75pt]
+\multicolumn{2}{@{}X@{}}{AI-powered solution for cardiovascular risk assessment. Built an ML model that predicts CVD risk with 85-90\% accuracy. Analyzed 1,300+ patient records, cutting assessment time by 60\%.}  \\
+\end{tabularx}
+
+\vspace{10pt}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Werk - An Online Job Portal} & \hfill \href{https://github.com}{GitHub} \\[3.75pt]
+\multicolumn{2}{@{}X@{}}{Helped in launching a functional online job portal using Laravel (PHP) incorporating features for job searching, application submissions, and employer postings. Published research paper titled 'WERK - An online job portal' on IJRPR.}  \\
+\end{tabularx}
+
+\vspace{10pt}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Swabhav360 – Impact Tracking Platform for SMI} & \\[3.75pt]
+\multicolumn{2}{@{}X@{}}{Developing a full-stack web application to track child development, coach inputs, and volunteer activities with gamified elements, real-time analytics, and secure user roles. Built using React, Node.js, MongoDB, and AWS, with features like dashboards, leaderboards, and role-based access for nationwide deployment.}  \\
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
@@ -184,31 +180,30 @@ long long line of blah blah that will wrap when the table fills the column width
 %----------------------------------------------------------------------------------------
 \section{Education}
 \begin{tabularx}{\linewidth}{@{}l X@{}}	
-2030 - present & PhD (Subject) at \textbf{University} \hfill \normalsize (GPA: 4.0/4.0) \\
-
-2023 - 2027 & Bachelor's Degree at \textbf{College} \hfill (GPA: 4.0/4.0) \\ 
-
-2022 & Class 12th Some Board \hfill  (Grades) \\
-
-2021 & Class 10th Some Board \hfill  (Grades) \\
+2022 - 2026 & Bachelor of Engineering in Computer Engineering at \textbf{Fr.C. Rodrigues Institute of Technology, Vashi} \hfill \normalsize (CGPA: 9.20/10.0) \\
 \end{tabularx}
 
 %----------------------------------------------------------------------------------------
-%	PUBLICATIONS
+%	CERTIFICATIONS
 %----------------------------------------------------------------------------------------
-\section{Publications}
-\begin{refsection}[citations.bib]
-\nocite{*}
-\printbibliography[heading=none]
-\end{refsection}
+\section{Certifications}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+Core Java Programming & 45 hours of training on Core Java(JSE) Programming Course at Pinnacle Tech Programs \\[3pt]
+Deep Learning Certificate & 18 hours of Industrial Training and Winter Internship on 'Deep Learning - Layers of Learning' by RVTechlearn and PNT Academy \\[3pt]
+AI Project Completion & Certificate of Completion – IISER Mohali - Awarded for successfully completing a year-long AI-based project on cardiovascular risk prediction using machine learning \\
+\end{tabularx}
 
 %----------------------------------------------------------------------------------------
 %	SKILLS
 %----------------------------------------------------------------------------------------
-\section{Skills}
+\section{Technical Skills}
 \begin{tabularx}{\linewidth}{@{}l X@{}}
-Some Skills &  \normalsize{This, That, Some of this and that etc.}\\
-Some More Skills  &  \normalsize{Also some more of this, Some more that, And some of this and that etc.}\\  
+Programming Languages & Python, Java, PHP, JavaScript, HTML, CSS \\[3pt]
+Frameworks \& Libraries & Laravel, React, Node.js, Next.js, Tailwind CSS \\[3pt]
+Machine Learning & Random Forest, XGBoost, SHAP, YOLOv11, Deep Learning \\[3pt]
+Databases & MongoDB, Firebase, MySQL \\[3pt]
+Cloud \& Tools & AWS, Git, GitHub, Gemini API \\[3pt]
+Specializations & Full Stack Development, Computer Vision, AI/ML Model Development \\
 \end{tabularx}
 
 \vfill
