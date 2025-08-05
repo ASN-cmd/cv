@@ -1,212 +1,262 @@
-%-----------------------------------------------------------------------------------------------------------------------------------------------%
-%	The MIT License (MIT)
-%
-%	Copyright (c) 2021 Jitin Nair
-%
-%	Permission is hereby granted, free of charge, to any person obtaining a copy
-%	of this software and associated documentation files (the "Software"), to deal
-%	in the Software without restriction, including without limitation the rights
-%	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-%	copies of the Software, and to permit persons to whom the Software is
-%	furnished to do so, subject to the following conditions:
-%	
-%	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-%	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-%	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-%	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-%	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-%	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-%	THE SOFTWARE.
-%	
-%
-%-----------------------------------------------------------------------------------------------------------------------------------------------%
+%-------------------------
+% Resume in Latex
+% Author : Aryan Sukhadan Nair
+% Based on: https://github.com/AyushSNair/AutoCV
+%------------------------
 
-%----------------------------------------------------------------------------------------
-%	DOCUMENT DEFINITION
-%----------------------------------------------------------------------------------------
+\documentclass[letterpaper,11pt]{article}
 
-% article class because we want to fully customize the page and not use a cv template
-\documentclass[a4paper,12pt]{article}
-
-%----------------------------------------------------------------------------------------
-%	PACKAGES
-%----------------------------------------------------------------------------------------
-\usepackage{url}
-\usepackage{parskip} 	
-
-%other packages for formatting
-\RequirePackage{color}
-\RequirePackage{graphicx}
-\usepackage[usenames,dvipsnames]{xcolor}
-\usepackage[scale=0.9]{geometry}
-
-%tabularx environment
-\usepackage{tabularx}
-
-%for lists within experience section
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
 \usepackage{enumitem}
-
-% centered version of 'X' col. type
-\newcolumntype{C}{>{\centering\arraybackslash}X} 
-
-%to prevent spillover of tabular into next pages
-\usepackage{supertabular}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
 \usepackage{tabularx}
-\newlength{\fullcollw}
-\setlength{\fullcollw}{0.47\textwidth}
-
-%custom \section
-\usepackage{titlesec}				
-\usepackage{multicol}
-\usepackage{multirow}
-
-%CV Sections inspired by: 
-%http://stefano.italians.nl/archives/26
-\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
-\titlespacing{\section}{0pt}{10pt}{10pt}
-
-%Setup hyperref package, and colours for links
-\usepackage[unicode, draft=false]{hyperref}
-\definecolor{linkcolour}{rgb}{0,0.2,0.6}
-\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
-
-%for social icons
 \usepackage{fontawesome5}
+\usepackage{multicol}
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\input{glyphtounicode}
 
-% job listing environments
-\newenvironment{jobshort}[2]
-    {
-    \begin{tabularx}{\linewidth}{@{}l X r@{}}
-    \textbf{#1} & \hfill &  #2 \\[3.75pt]
-    \end{tabularx}
-    }
-    {
-    }
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
 
-\newenvironment{joblong}[2]
-    {
-    \begin{tabularx}{\linewidth}{@{}l X r@{}}
-    \textbf{#1} & \hfill &  #2 \\[3.75pt]
-    \end{tabularx}
-    \begin{minipage}[t]{\linewidth}
-    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt,label=--]
-    }
-    {
-    \end{itemize}
-    \end{minipage}    
-    }
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
 
-%----------------------------------------------------------------------------------------
-%	BEGIN DOCUMENT
-%----------------------------------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{1.4in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\classesList}[4]{
+    \item\small{
+        {#1 #2 #3 #4 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textbf{\small #2} \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \textbf{\small #2}\\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{document}
 
-% non-numbered pages
-\pagestyle{empty} 
+%----------HEADING----------
+\begin{center}
+    {\Huge \scshape Aryan Sukhadan Nair} \\ \vspace{1pt}
+    Full Stack Developer \\ \vspace{1pt}
+    \small \raisebox{-0.1\height}\faPhone\ (+91) 9321442430 ~ \href{mailto:nairaryan135@gmail.com}{\raisebox{-0.2\height}\faEnvelope\  nairaryan135@gmail.com} ~ 
+    \href{https://linkedin.com/in/aryan-nair}{\raisebox{-0.2\height}\faLinkedin\ linkedin.com/in/aryan-nair}  ~
+    \href{https://github.com/aryannair}{\raisebox{-0.2\height}\faGithub\ github.com/aryannair}
+    \vspace{-8pt}
+\end{center}
 
-%----------------------------------------------------------------------------------------
-%	TITLE
-%----------------------------------------------------------------------------------------
-
-\begin{tabularx}{\linewidth}{@{} C @{}}
-\Huge{ARYAN SUKHADAN NAIR} \\[7.5pt]
-\normalsize{Full Stack Developer} \\[10pt]
-\href{https://github.com/username}{\raisebox{-0.05\height}\faGithub\ Github} \ $|$ \ 
-\href{https://linkedin.com/in/username}{\raisebox{-0.05\height}\faLinkedin\ LinkedIn} \ $|$ \ 
-\href{mailto:nairaryan135@gmail.com}{\raisebox{-0.05\height}\faEnvelope \ nairaryan135@gmail.com} \ $|$ \ 
-\href{tel:+919321442430}{\raisebox{-0.05\height}\faMobile \ +91-9321442430} \\
-\end{tabularx}
-
-%----------------------------------------------------------------------------------------
-% EXPERIENCE SECTIONS
-%----------------------------------------------------------------------------------------
-
-%Summary
-\section{Summary}
-Full Stack Developer with expertise in machine learning and web development. Proven track record in developing AI-powered healthcare solutions and scalable web applications. Experienced in leading technical teams and delivering high-impact projects with measurable results.
-
-%Experience
-\section{Work Experience}
-
-\begin{joblong}{Research Intern}{July 2024 - June 2025}
-\textbf{IISER Mohali} \hfill Kalyan, Maharashtra
-\item Developed a machine learning-based system using Random Forest, XGBoost, and SHAP to predict CVD risk with 85–90\% accuracy
-\item Processed 1,300+ patient records, reducing assessment time by 60\%
-\item Integrated Gemini API for automated scoring and report interpretation
-\item Delivered a user-friendly dashboard with chatbot support, ensuring affordability and accessibility for widespread adoption in India
-\end{joblong}
-
-\begin{joblong}{Technical Head CSI FCRIT}{July 2024 - Present}
-\textbf{Fr.C. Rodrigues Institute of Technology, Vashi}
-\item Developing and maintaining the official website for CSI, enhancing user engagement by implementing interactive features that led to a 30\% increase in site traffic over six months
-\item Developed a dynamic and responsive hackathon website using Next.js and Tailwind CSS, ensuring a seamless user experience with fast performance and modern UI design
-\end{joblong}
-
-\begin{joblong}{Project Intern}{July 2025 - Present}
-\textbf{IISER x Suraj Informatics}
-\item Working on a YOLOv11-based smart vision system for real-time baggage counting
-\item Integrating ByteTrack, zone-based logic, and anomaly detection with a live dashboard to enhance accuracy and scalability for deployment in crowded environments
-\end{joblong}
-
-\begin{joblong}{Project Lead - Sport Mentoring Infusion NGO}{July 2025 - Present}
-\item Leading development of Swabhav360, a unified digital platform for tracking child behavior, sports progress, volunteer impact, and analytics
-\item Built using React, Node.js, Firebase, with secure user roles, gamification, and real-time dashboards for impactful deployment at SMI's national event
-\end{joblong}
-
-%Projects
-\section{Projects}
-
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{Medisage - CVD Risk Calculator with Report Analysis} & \hfill \href{https://github.com}{GitHub} \\[3.75pt]
-\multicolumn{2}{@{}X@{}}{AI-powered solution for cardiovascular risk assessment. Built an ML model that predicts CVD risk with 85-90\% accuracy. Analyzed 1,300+ patient records, cutting assessment time by 60\%.}  \\
-\end{tabularx}
-
-\vspace{10pt}
-
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{Werk - An Online Job Portal} & \hfill \href{https://github.com}{GitHub} \\[3.75pt]
-\multicolumn{2}{@{}X@{}}{Helped in launching a functional online job portal using Laravel (PHP) incorporating features for job searching, application submissions, and employer postings. Published research paper titled 'WERK - An online job portal' on IJRPR.}  \\
-\end{tabularx}
-
-\vspace{10pt}
-
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{Swabhav360 – Impact Tracking Platform for SMI} & \\[3.75pt]
-\multicolumn{2}{@{}X@{}}{Developing a full-stack web application to track child development, coach inputs, and volunteer activities with gamified elements, real-time analytics, and secure user roles. Built using React, Node.js, MongoDB, and AWS, with features like dashboards, leaderboards, and role-based access for nationwide deployment.}  \\
-\end{tabularx}
-
-%----------------------------------------------------------------------------------------
-%	EDUCATION
-%----------------------------------------------------------------------------------------
+%-----------EDUCATION-----------
 \section{Education}
-\begin{tabularx}{\linewidth}{@{}l X@{}}	
-2022 - 2026 & Bachelor of Engineering in Computer Engineering at \textbf{Fr.C. Rodrigues Institute of Technology, Vashi} \hfill \normalsize (CGPA: 9.20/10.0) \\
-\end{tabularx}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Fr. C. Rodrigues Institute of Technology}{Vashi, Maharashtra}
+      {Bachelor of Engineering in Computer Engineering}{2022 -- 2026}
+      \resumeItemListStart
+        \resumeItem{CGPA: 9.20/10.0}
+        \resumeItem{Location: Kalyan, Maharashtra}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
 
-%----------------------------------------------------------------------------------------
-%	CERTIFICATIONS
-%----------------------------------------------------------------------------------------
+%-----------EXPERIENCE-----------
+\section{Work Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {IISER x Suraj Informatics}{Remote}
+      {Project Intern}{Jul 2025 -- Present}
+      \resumeItemListStart
+        \resumeItem{Working on YOLOv11-based smart vision system for real-time baggage counting}
+        \resumeItem{Integrating ByteTrack, zone-based logic, and anomaly detection with live dashboard}
+        \resumeItem{Enhancing accuracy and scalability for deployment in crowded environments}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Sports Mentoring Infusion - NGO}{Remote}
+      {Full Stack Developer}{Jul 2025 -- Present}
+      \resumeItemListStart
+        \resumeItem{Leading development of Swabhav360, a unified digital platform for tracking child behavior and sports progress}
+        \resumeItem{Built using React, Node.js, MongoDB, and AWS with secure user roles and gamification}
+        \resumeItem{Implementing real-time dashboards and analytics for impactful deployment at SMI's national event}
+        \resumeItem{Developing role-based access control and leaderboards for nationwide deployment}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Computer Society of India (CSI) FCRIT}{Vashi, Maharashtra}
+      {Technical Head}{Jul 2024 -- Present}
+      \resumeItemListStart
+        \resumeItem{Developing and maintaining official CSI website, enhancing user engagement}
+        \resumeItem{Implemented interactive features leading to 30\% increase in site traffic over six months}
+        \resumeItem{Developed dynamic and responsive hackathon website using Next.js and Tailwind CSS}
+        \resumeItem{Ensured seamless user experience with fast performance and modern UI design}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {IISER Mohali}{Mohali, Punjab}
+      {Research Intern}{Jul 2024 -- Jun 2025}
+      \resumeItemListStart
+        \resumeItem{Developed machine learning-based system using Random Forest, XGBoost, and SHAP for CVD risk prediction}
+        \resumeItem{Achieved 85--90\% accuracy in cardiovascular risk assessment using 1,300+ patient records}
+        \resumeItem{Reduced assessment time by 60\% through automated ML pipeline implementation}
+        \resumeItem{Integrated Gemini API for automated scoring and report interpretation}
+        \resumeItem{Delivered user-friendly dashboard with chatbot support for widespread adoption in India}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+\vspace{-16pt}
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \vspace{-5pt}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{Swabhav360 -- Impact Tracking Platform for SMI} $|$ \emph{React, Node.js, MongoDB, AWS}}{2025}
+          \resumeItemListStart
+            \resumeItem{Developing full-stack web application to track child development, coach inputs, and volunteer activities}
+            \resumeItem{Implemented gamified elements, real-time analytics, and secure user roles}
+            \resumeItem{Built features including dashboards, leaderboards, and role-based access for nationwide deployment}
+          \resumeItemListEnd
+          \vspace{-13pt}
+      \resumeProjectHeading
+          {\textbf{Medisage - CVD Risk Calculator with Report Analysis} $|$ \emph{ML, Python, APIs}}{2024}
+          \resumeItemListStart
+            \resumeItem{Built AI-powered solution for cardiovascular risk assessment with 85-90\% accuracy}
+            \resumeItem{Analyzed 1,300+ patient records, cutting assessment time by 60\%}
+            \resumeItem{Developed ML model using Random Forest and XGBoost for precise risk prediction}
+          \resumeItemListEnd 
+          \vspace{-13pt}
+      \resumeProjectHeading
+          {\textbf{Werk - An Online Job Portal} $|$ \emph{Laravel (PHP), MySQL}}{2024}
+          \resumeItemListStart
+            \resumeItem{Launched functional online job portal incorporating job searching and application submissions}
+            \resumeItem{Implemented employer posting features and user management system}
+            \resumeItem{Published research paper titled 'WERK - An online job portal' on IJRPR}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+\vspace{-15pt}
+
+%-----------CERTIFICATIONS-----------
 \section{Certifications}
-\begin{tabularx}{\linewidth}{@{}l X@{}}
-Core Java Programming & 45 hours of training on Core Java(JSE) Programming Course at Pinnacle Tech Programs \\[3pt]
-Deep Learning Certificate & 18 hours of Industrial Training and Winter Internship on 'Deep Learning - Layers of Learning' by RVTechlearn and PNT Academy \\[3pt]
-AI Project Completion & Certificate of Completion – IISER Mohali - Awarded for successfully completing a year-long AI-based project on cardiovascular risk prediction using machine learning \\
-\end{tabularx}
+    \resumeSubHeadingListStart
+      \resumeSubheading
+        {Certificate of Completion -- IISER Mohali}{IISER Mohali}
+        {AI-based Cardiovascular Risk Prediction Project}{2024 -- 2025}
+        \resumeItemListStart
+          \resumeItem{Recognized contributions in model development and system integration for year-long ML project}
+        \resumeItemListEnd
+      \resumeSubheading
+        {Core Java (JSE) Programming Course}{Pinnacle Tech Programs}
+        {45 hours of intensive training}{2024}
+        \resumeItemListStart
+          \resumeItem{Comprehensive training in Java fundamentals and object-oriented programming}
+        \resumeItemListEnd
+      \resumeSubheading
+        {Deep Learning - Layers of Learning}{RVTechlearn \& PNT Academy}
+        {18 hours Industrial Training and Winter Internship}{2024}
+        \resumeItemListStart
+          \resumeItem{Hands-on experience with deep learning frameworks and neural network architectures}
+        \resumeItemListEnd
+    \resumeSubHeadingListEnd
 
-%----------------------------------------------------------------------------------------
-%	SKILLS
-%----------------------------------------------------------------------------------------
+%-----------PUBLICATIONS-----------
+\section{Publications}
+    \resumeSubHeadingListStart
+      \resumeSubheading
+        {WERK - An Online Job Portal}{International Journal of Research and Publication Reviews (IJRPR)}
+        {Research Paper Publication}{2024}
+        \resumeItemListStart
+          \resumeItem{Published comprehensive research on online job portal development and implementation}
+        \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+%-----------PROGRAMMING SKILLS-----------
 \section{Technical Skills}
-\begin{tabularx}{\linewidth}{@{}l X@{}}
-Programming Languages & Python, Java, PHP, JavaScript, HTML, CSS \\[3pt]
-Frameworks \& Libraries & Laravel, React, Node.js, Next.js, Tailwind CSS \\[3pt]
-Machine Learning & Random Forest, XGBoost, SHAP, YOLOv11, Deep Learning \\[3pt]
-Databases & MongoDB, Firebase, MySQL \\[3pt]
-Cloud \& Tools & AWS, Git, GitHub, Gemini API \\[3pt]
-Specializations & Full Stack Development, Computer Vision, AI/ML Model Development \\
-\end{tabularx}
-
-\vfill
-\center{\footnotesize Last updated: \today}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Java, Python, JavaScript, PHP, HTML/CSS, SQL} \\
+     \textbf{Frameworks \& Technologies}{: React, Node.js, Next.js, Laravel, Tailwind CSS} \\
+     \textbf{Machine Learning}{: Random Forest, XGBoost, SHAP, TensorFlow, Scikit-learn} \\
+     \textbf{Databases}{: MongoDB, MySQL, PostgreSQL} \\
+     \textbf{Cloud \& Tools}{: AWS, Firebase, Git, Docker} \\
+     \textbf{Computer Vision}{: YOLOv11, ByteTrack, OpenCV}
+    }}
+ \end{itemize}
+ \vspace{-16pt}
 
 \end{document}
