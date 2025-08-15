@@ -1,17 +1,12 @@
-%-------------------------
-% Author : Aryan Sukhadan Nair
-%------------------------
-
 \documentclass[10pt, letterpaper]{article}
 
-% Packages:
+% Packages
 \usepackage[
-    ignoreheadfoot,
-    top=2 cm,
-    bottom=2 cm,
-    left=2 cm,
-    right=2 cm,
-    footskip=1.0 cm,
+    top=2cm,
+    bottom=2cm,
+    left=2cm,
+    right=2cm,
+    footskip=1.0cm,
 ]{geometry}
 \usepackage{titlesec}
 \usepackage{tabularx}
@@ -22,77 +17,43 @@
 \usepackage{fontawesome5}
 \usepackage{amsmath}
 \usepackage[
-    pdftitle={Aryan Sukhadan Nair's Resume},
-    pdfauthor={Aryan Sukhadan Nair},
     colorlinks=true,
     urlcolor=primaryColor
 ]{hyperref}
-\usepackage[pscoord]{eso-pic}
-\usepackage{calc}
-\usepackage{bookmark}
-\usepackage{lastpage}
-\usepackage{changepage}
 \usepackage{paracol}
-\usepackage{ifthen}
-\usepackage{needspace}
-\usepackage{iftex}
-\usepackage{multicol}
-
-% Ensure PDF is machine readable
-\ifPDFTeX
-    \input{glyphtounicode}
-    \pdfgentounicode=1
-    \usepackage[utf8]{inputenc}
-    \usepackage{lmodern}
-\fi
+\usepackage{changepage}
+\usepackage{lastpage}
 
 % Settings
-\AtBeginEnvironment{adjustwidth}{\partopsep0pt}
 \pagestyle{empty}
 \setcounter{secnumdepth}{0}
 \setlength{\parindent}{0pt}
-\setlength{\topskip}{0pt}
 \setlength{\columnsep}{0cm}
 
-% Footer style
-\makeatletter
-\let\ps@customFooterStyle\ps@plain
-\patchcmd{\ps@customFooterStyle}{\thepage}{
-    \color{gray}\textit{\small Aryan Sukhadan Nair - Page \thepage{} of \pageref*{LastPage}}
-}{}{}
-\makeatother
-\pagestyle{customFooterStyle}
-
 % Section formatting
-\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
-\titlespacing{\section}{
-    -1pt
-}{
-    0.3 cm
-}{
-    0.2 cm
-}
+\titleformat{\section}{\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+\titlespacing{\section}{0pt}{0.3cm}{0.2cm}
 
 % Custom environments
 \renewcommand\labelitemi{$\circ$}
 \newenvironment{highlights}{
     \begin{itemize}[
-        topsep=0.10 cm,
-        parsep=0.10 cm,
+        topsep=0.10cm,
+        parsep=0.10cm,
         partopsep=0pt,
         itemsep=0pt,
-        leftmargin=0.4 cm + 10pt
+        leftmargin=0.4cm + 10pt
     ]
 }{\end{itemize}}
 
 \newenvironment{onecolentry}{
-    \begin{adjustwidth}{0.2 cm}{0.2 cm}
+    \begin{adjustwidth}{0.2cm}{0.2cm}
 }{\end{adjustwidth}}
 
 \newenvironment{twocolentry}[2][]{
     \onecolentry
     \def\secondColumn{#2}
-    \setcolumnwidth{\fill, 4.5 cm}
+    \setcolumnwidth{\fill, 4.5cm}
     \begin{paracol}{2}
 }{
     \switchcolumn \raggedleft \secondColumn
@@ -100,72 +61,45 @@
     \endonecolentry
 }
 
+% Header environment
 \newenvironment{header}{
-    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
-}{\par\kern\topsep}
+    \centering\linespread{1.5}
+}{\par}
 
-% Last updated text
-\newcommand{\placelastupdatedtext}{%
-  \AddToShipoutPictureFG*{%
-    \put(
-        \LenToUnit{\paperwidth-2 cm-0.2 cm+0.05cm},
-        \LenToUnit{\paperheight-1.0 cm}
-    ){\vtop{{\null}\makebox[0pt][c]{
-        \small\color{gray}\textit{Last updated in \today}\hspace{\widthof{Last updated in September 2024}}
-    }}}%
-}%
-
-% Document begins
 \begin{document}
-    \newcommand{\AND}{\unskip
-        \cleaders\copy\ANDbox\hskip\wd\ANDbox
-        \ignorespaces
-    }
-    \newsavebox\ANDbox
-    \sbox\ANDbox{}
 
-    \placelastupdatedtext
-    \begin{header}
-        \textbf{\fontsize{24 pt}{24 pt}\selectfont Aryan Sukhadan Nair}
-
-        \vspace{0.3 cm}
-
-        \normalsize
-        \mbox{{\color{black}\footnotesize\faPhone*}\hspace*{0.13cm}(+91) 9321442430}%
-        \kern 0.25 cm%
-        \AND%
-        \kern 0.25 cm%
-        \mbox{\href{mailto:nairaryan135@gmail.com}{\color{black}{\footnotesize\faEnvelope[regular]}\hspace*{0.13cm}nairaryan135@gmail.com}}%
-        \kern 0.25 cm%
-        \AND%
-        \kern 0.25 cm%
-        \mbox{\href{https://www.linkedin.com/in/aryan-nair-244181308/}{\color{black}{\footnotesize\faLinkedinIn}\hspace*{0.13cm}linkedin.com/in/aryan-nair}}%
-        \kern 0.25 cm%
-        \AND%
-        \kern 0.25 cm%
-        \mbox{\href{https://github.com/ASN-cmd}{\color{black}{\footnotesize\faGithub}\hspace*{0.13cm}github.com/aryannair}}%
-    \end{header}
-
-    \vspace{0.3 cm}
-
-    \section{Education}
+\begin{header}
+    \textbf{\fontsize{24pt}{24pt}\selectfont Aryan Sukhadan Nair}
     
-    \begin{twocolentry}{
-        \textit{2022 -- 2026}
-    }
-        \textbf{Fr. C. Rodrigues Institute of Technology}
-        
-        \textit{Bachelor of Engineering in Computer Engineering}
-    \end{twocolentry}
+    \vspace{0.3cm}
     
-    \vspace{0.10 cm}
-    \begin{onecolentry}
-        \begin{highlights}
-            \item CGPA: 9.20/10.0 (till SEM 6)
-        \end{highlights}
-    \end{onecolentry}
+    \normalsize
+    \faPhone\ (+91) 9321442430 \hspace{0.25cm} | \hspace{0.25cm}
+    \faEnvelope\ \href{mailto:nairaryan135@gmail.com}{nairaryan135@gmail.com} \hspace{0.25cm} | \hspace{0.25cm}
+    \faLinkedin\ \href{https://www.linkedin.com/in/aryan-nair-244181308/}{linkedin.com/in/aryan-nair} \hspace{0.25cm} | \hspace{0.25cm}
+    \faGithub\ \href{https://github.com/ASN-cmd}{github.com/aryannair}
+\end{header}
 
-    \section{Work Experience}
+\vspace{0.3cm}
+
+\section{Education}
+    
+\begin{twocolentry}{
+    \textit{2022 -- 2026}
+}
+    \textbf{Fr. C. Rodrigues Institute of Technology}
+    
+    \textit{Bachelor of Engineering in Computer Engineering}
+\end{twocolentry}
+
+\vspace{0.1cm}
+\begin{onecolentry}
+    \begin{highlights}
+        \item CGPA: 9.20/10.0 (till SEM 6)
+    \end{highlights}
+\end{onecolentry}
+
+\section{Work Experience}
     
     \begin{twocolentry}{
         \textit{Jul 2025 -- Present}
