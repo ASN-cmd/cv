@@ -2,254 +2,362 @@
 % Author : Aryan Sukhadan Nair
 %------------------------
 
-\documentclass[letterpaper,11pt]{article}
+\documentclass[10pt, letterpaper]{article}
 
-\usepackage{latexsym}
-\usepackage[empty]{fullpage}
+% Packages:
+\usepackage[
+    ignoreheadfoot,
+    top=2 cm,
+    bottom=2 cm,
+    left=2 cm,
+    right=2 cm,
+    footskip=1.0 cm,
+]{geometry}
 \usepackage{titlesec}
-\usepackage{marvosym}
-\usepackage[usenames,dvipsnames]{color}
-\usepackage{verbatim}
-\usepackage{enumitem}
-\usepackage[hidelinks]{hyperref}
-\usepackage{fancyhdr}
-\usepackage[english]{babel}
 \usepackage{tabularx}
+\usepackage{array}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{primaryColor}{RGB}{0, 79, 144}
+\usepackage{enumitem}
 \usepackage{fontawesome5}
+\usepackage{amsmath}
+\usepackage[
+    pdftitle={Aryan Sukhadan Nair's Resume},
+    pdfauthor={Aryan Sukhadan Nair},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref}
+\usepackage[pscoord]{eso-pic}
+\usepackage{calc}
+\usepackage{bookmark}
+\usepackage{lastpage}
+\usepackage{changepage}
+\usepackage{paracol}
+\usepackage{ifthen}
+\usepackage{needspace}
+\usepackage{iftex}
 \usepackage{multicol}
-\setlength{\multicolsep}{-3.0pt}
-\setlength{\columnsep}{-1pt}
-\input{glyphtounicode}
 
-%----------FONT OPTIONS----------
-% sans-serif
-% \usepackage[sfdefault]{FiraSans}
-% \usepackage[sfdefault]{roboto}
-% \usepackage[sfdefault]{noto-sans}
-% \usepackage[default]{sourcesanspro}
+% Ensure PDF is machine readable
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
 
-% serif
-% \usepackage{CormorantGaramond}
-% \usepackage{charter}
+% Settings
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt}
+\pagestyle{empty}
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\columnsep}{0cm}
 
-\pagestyle{fancy}
-\fancyhf{} % clear all header and footer fields
-\fancyfoot{}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
+% Footer style
+\makeatletter
+\let\ps@customFooterStyle\ps@plain
+\patchcmd{\ps@customFooterStyle}{\thepage}{
+    \color{gray}\textit{\small Aryan Sukhadan Nair - Page \thepage{} of \pageref*{LastPage}}
+}{}{}
+\makeatother
+\pagestyle{customFooterStyle}
 
-% Adjust margins
-\addtolength{\oddsidemargin}{-0.6in}
-\addtolength{\evensidemargin}{-0.5in}
-\addtolength{\textwidth}{1.19in}
-\addtolength{\topmargin}{-.7in}
-\addtolength{\textheight}{1.4in}
-
-\urlstyle{same}
-
-\raggedbottom
-\raggedright
-\setlength{\tabcolsep}{0in}
-
-% Sections formatting
-\titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large\bfseries
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
-
-% Ensure that generate pdf is machine readable/ATS parsable
-\pdfgentounicode=1
-
-%-------------------------
-% Custom commands
-\newcommand{\resumeItem}[1]{
-  \item\small{
-    {#1 \vspace{-2pt}}
-  }
+% Section formatting
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+\titlespacing{\section}{
+    -1pt
+}{
+    0.3 cm
+}{
+    0.2 cm
 }
 
-\newcommand{\classesList}[4]{
-    \item\small{
-        {#1 #2 #3 #4 \vspace{-2pt}}
-  }
+% Custom environments
+\renewcommand\labelitemi{$\circ$}
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0.4 cm + 10pt
+    ]
+}{\end{itemize}}
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{0.2 cm}{0.2 cm}
+}{\end{adjustwidth}}
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
 }
 
-\newcommand{\resumeSubheading}[4]{
-  \vspace{-2pt}\item
-    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & \textbf{\small #2} \\
-      \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-7pt}
-}
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{\par\kern\topsep}
 
-\newcommand{\resumeSubSubheading}[2]{
-    \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \textit{\small#1} & \textit{\small #2} \\
-    \end{tabular*}\vspace{-7pt}
-}
+% Last updated text
+\newcommand{\placelastupdatedtext}{%
+  \AddToShipoutPictureFG*{%
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0.2 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{Last updated in \today}\hspace{\widthof{Last updated in September 2024}}
+    }}}%
+}%
 
-\newcommand{\resumeProjectHeading}[2]{
-    \item
-    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
-      \small#1 & \textbf{\small #2}\\
-    \end{tabular*}\vspace{-7pt}
-}
-
-\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
-
-\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
-\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
-
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
-\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
-
-%-------------------------------------------
-%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+% Document begins
 \begin{document}
+    \newcommand{\AND}{\unskip
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{}
 
-%----------HEADING----------
-\begin{center}
-    {\Huge \scshape Aryan Sukhadan Nair} \\ \vspace{1pt}
-    \small \raisebox{-0.1\height}\faPhone\ (+91) 9321442430 ~ \href{mailto:nairaryan135@gmail.com}{\raisebox{-0.2\height}\faEnvelope\  nairaryan135@gmail.com} ~ 
-    \href{https://www.linkedin.com/in/aryan-nair-244181308/}{\raisebox{-0.2\height}\faLinkedin\ linkedin.com/in/aryan-nair}  ~
-    \href{https://github.com/ASN-cmd}{\raisebox{-0.2\height}\faGithub\ github.com/aryannair}
-    \vspace{-8pt}
-\end{center}
-  
-%-----------EDUCATION-----------
-\section{Education}
-  \resumeSubHeadingListStart
-    \resumeSubheading
-      {Fr. C. Rodrigues Institute of Technology}{Vashi, Maharashtra}
-      {Bachelor of Engineering in Computer Engineering}{2022 -- 2026}
-      \resumeItemListStart
-        \resumeItem{CGPA: 9.20/10.0} (till SEM 6)
-      \resumeItemListEnd
-  \resumeSubHeadingListEnd
+    \placelastupdatedtext
+    \begin{header}
+        \textbf{\fontsize{24 pt}{24 pt}\selectfont Aryan Sukhadan Nair}
 
-%-----------EXPERIENCE-----------
-\section{Work Experience}
-  \resumeSubHeadingListStart
+        \vspace{0.3 cm}
 
-    \resumeSubheading
-      {IISER x Suraj Informatics}{Remote}
-      {Project Intern}{Jul 2025 -- Present}
-      \resumeItemListStart
-        \resumeItem{Working on YOLOv11-based smart vision system for real-time baggage counting}
-        \resumeItem{Integrating ByteTrack, zone-based logic, and anomaly detection with live dashboard}
-        \resumeItem{Enhancing accuracy and scalability for deployment in crowded environments}
-      \resumeItemListEnd
+        \normalsize
+        \mbox{{\color{black}\footnotesize\faPhone*}\hspace*{0.13cm}(+91) 9321442430}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\href{mailto:nairaryan135@gmail.com}{\color{black}{\footnotesize\faEnvelope[regular]}\hspace*{0.13cm}nairaryan135@gmail.com}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\href{https://www.linkedin.com/in/aryan-nair-244181308/}{\color{black}{\footnotesize\faLinkedinIn}\hspace*{0.13cm}linkedin.com/in/aryan-nair}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\href{https://github.com/ASN-cmd}{\color{black}{\footnotesize\faGithub}\hspace*{0.13cm}github.com/aryannair}}%
+    \end{header}
 
-    \resumeSubheading
-      {Sports Mentoring Infusion - NGO}{Remote}
-      {Full Stack Developer Intern}{Jun 2025 -- Present}
-      \resumeItemListStart
-        \resumeItem{Designed and implemented backend services using Node.js and PostgreSQL for Swabhav360, a platform aimed at supporting 100+ orphan students.}
-        \resumeItem{Managed APK builds and handled overall integration between backend, frontend, and database.}
-        \resumeItem{Built key features for student task module and admin module, including class management, coach/student assignments, daily task reviews, and    task allocation.}
-        \resumeItem{Collaborated with the frontend team to enhance UI/UX for student and admin interfaces using React Native.}
-      \resumeItemListEnd
+    \vspace{0.3 cm}
 
-    \resumeSubheading
-      {Computer Society of India (CSI) FCRIT}{Vashi, Maharashtra}
-      {Technical Head}{Jul 2024}
-      \resumeItemListStart
-        \resumeItem{Deployed and hosted the pre-built CSI website on the college domain, ensuring accessibility for all users.}
-        \resumeItem{Updated website content to meet team requirements, including team section, past events, and current events displays.}
-        \resumeItem{Contributed to the hackathon website by developing the domain page with detailed information about problem statements.}
-      \resumeItemListEnd
+    \section{Education}
+    
+    \begin{twocolentry}{
+        \textit{2022 -- 2026}
+    }
+        \textbf{Fr. C. Rodrigues Institute of Technology}
+        
+        \textit{Bachelor of Engineering in Computer Engineering}
+    \end{twocolentry}
+    
+    \vspace{0.10 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item CGPA: 9.20/10.0 (till SEM 6)
+        \end{highlights}
+    \end{onecolentry}
 
-    \resumeSubheading
-      {IISER Mohali}{Mohali, Punjab}
-      {Project Intern}{Jul 2024 -- Jun 2025}
-      \resumeItemListStart
-        \resumeItem{Preprocessed and analyzed 4 cardiovascular datasets; trained and compared Linear Regression, Logistic Regression, Random Forest, XGBoost, and SVM models on raw and processed data (1300+ pateint data).}
-        \resumeItem{Integrated Gemini API for medical report uploads and AI-powered explanations using Gemini 2.5.}
-        \resumeItem{Built healthcare web app with CVD risk prediction (Framingham Risk Score + ML models), interactive health history graphs, and secure file/profile management.}
-      \resumeItemListEnd
-  \resumeSubHeadingListEnd
-\vspace{-16pt}
+    \section{Work Experience}
+    
+    \begin{twocolentry}{
+        \textit{Jul 2025 -- Present}
+    }
+        \textbf{IISER x Suraj Informatics}
+        
+        \textit{Project Intern (Remote)}
+    \end{twocolentry}
+    
+    \vspace{0.10 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Working on YOLOv11-based smart vision system for real-time baggage counting
+            \item Integrating ByteTrack, zone-based logic, and anomaly detection with live dashboard
+            \item Enhancing accuracy and scalability for deployment in crowded environments
+        \end{highlights}
+    \end{onecolentry}
 
-%-----------PROJECTS-----------
-\section{Projects}
-    \vspace{-5pt}
-    \resumeSubHeadingListStart
-      \resumeProjectHeading
-          {\textbf{Swabhav360 -- Impact Tracking Platform for SMI} $|$ \emph{React Native, Node.js, Postgres}}{2025}
-          \resumeItemListStart
-            \resumeItem{Developing full-stack React Native mobile app to track child development, coach inputs, and volunteer activities}
-            \resumeItem{Implemented gamified elements, real-time analytics, and secure user roles}
-            \resumeItem{Built features including dashboards, leaderboards, and role-based access for nationwide deployment}
-          \resumeItemListEnd
-          \vspace{-13pt}
-      \resumeProjectHeading
-          {\textbf{Secure Chat Application} $|$ \emph{Python, RSA Encryption, React, CI/CD}}{2025}
-          \resumeItemListStart
-            \resumeItem{Developed a full-stack chat platform enabling real-time encrypted communication between two users.}
-            \resumeItem{Implemented end-to-end RSA encryption (2048-bit) with dynamic key exchange over custom socket connections.}
-            \resumeItem{Built a responsive React interface with real-time message updates; tested with up to 10 concurrent users.}
-            \resumeItem{Deployed frontend on Vercel and backend on Render, using GitHub Actions for automated CI/CD workflows.}
-          \resumeItemListEnd 
-          \vspace{-13pt}
-      \resumeProjectHeading
-          {\textbf{Personal Portfolio Website} $|$ \emph{React, Framer Motion, GitHub Actions - CI/CD}}{2025}
-          \resumeItemListStart
-            \resumeItem{Designed and deployed a fully responsive personal portfolio using React and Framer Motion for smooth animations and dynamic transitions.}
-            \resumeItem{Showcased 3+ projects with detailed case studies, GitHub links, and live demos highlighting frontend, backend, and AI/ML work.}
-            \resumeItem{Integrated GitHub Actions for automated deployment and continuous integration, ensuring quick and consistent updates on each push.}
-          \resumeItemListEnd
-    \resumeSubHeadingListEnd
-\vspace{-15pt}
+    \vspace{0.2 cm}
 
-%-----------CERTIFICATIONS-----------
-\section{Certifications}
-    \resumeSubHeadingListStart
-      \resumeSubheading
-        {Certificate of Completion -- IISER Mohali}{IISER Mohali}
-        {AI-based Cardiovascular Risk Prediction Project}{2024 -- 2025}
-        \resumeItemListStart
-          \resumeItem{Recognized contributions in model development and system integration for year-long ML project}
-        \resumeItemListEnd
-      \resumeSubheading
-        {Core Java (JSE) Programming Course}{Pinnacle Tech Programs}
-        {45 hours of intensive training}{2024}
-        \resumeItemListStart
-          \resumeItem{Comprehensive training in Java fundamentals and object-oriented programming}
-        \resumeItemListEnd
-      \resumeSubheading
-        {Deep Learning - Layers of Learning}{RVTechlearn \& PNT Academy}
-        {18 hours Industrial Training and Winter Internship}{2024}
-        \resumeItemListStart
-          \resumeItem{Hands-on experience with deep learning frameworks and neural network architectures}
-        \resumeItemListEnd
-    \resumeSubHeadingListEnd
+    \begin{twocolentry}{
+        \textit{Jun 2025 -- Present}
+    }
+        \textbf{Sports Mentoring Infusion - NGO}
+        
+        \textit{Full Stack Developer Intern (Remote)}
+    \end{twocolentry}
+    
+    \vspace{0.10 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Designed and implemented backend services using Node.js and PostgreSQL for Swabhav360, a platform aimed at supporting 100+ orphan students
+            \item Managed APK builds and handled overall integration between backend, frontend, and database
+            \item Built key features for student task module and admin module including class management and daily task reviews
+            \item Collaborated with the frontend team to enhance UI/UX using React Native
+        \end{highlights}
+    \end{onecolentry}
 
-%-----------PUBLICATIONS-----------
-\section{Publications}
-    \resumeSubHeadingListStart
-      \resumeSubheading
-        {WERK - An Online Job Portal}{International Journal of Research and Publication Reviews (IJRPR)}
-        {Research Paper Publication}{2024}
-        \resumeItemListStart
-          \resumeItem{Published comprehensive research on online job portal development and implementation}
-        \resumeItemListEnd
-    \resumeSubHeadingListEnd
+    \vspace{0.2 cm}
 
-%-----------PROGRAMMING SKILLS-----------
-\section{Technical Skills}
- \begin{itemize}[leftmargin=0.15in, label={}]
-    \small{\item{
-     \textbf{Languages}{: Java, Python, JavaScript, HTML, CSS, SQL} \\
-     \textbf{Frameworks \& Technologies}{: React, Node.js, Next.js, Express, Tailwind CSS} \\
-     \textbf{Machine Learning}{: Random Forest, XGBoost, TensorFlow, Scikit-learn} \\
-     \textbf{Databases}{: MongoDB, MySQL, PostgreSQL} \\
-     \textbf{Cloud \& Tools}{: AWS, Git} \\
-     \textbf{Computer Vision}{: YOLO, ByteTrack, OpenCV}
-    }}
- \end{itemize}
- \vspace{-16pt}
+    \begin{twocolentry}{
+        \textit{Jul 2024}
+    }
+        \textbf{Computer Society of India (CSI) FCRIT}
+        
+        \textit{Technical Head (Vashi, Maharashtra)}
+    \end{twocolentry}
+    
+    \vspace{0.10 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Deployed and hosted the pre-built CSI website on the college domain
+            \item Updated website content including team section, past events, and current events displays
+            \item Contributed to hackathon website by developing domain page with problem statements
+        \end{highlights}
+    \end{onecolentry}
+
+    \vspace{0.2 cm}
+
+    \begin{twocolentry}{
+        \textit{Jul 2024 -- Jun 2025}
+    }
+        \textbf{IISER Mohali}
+        
+        \textit{Project Intern (Mohali, Punjab)}
+    \end{twocolentry}
+    
+    \vspace{0.10 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Preprocessed and analyzed 4 cardiovascular datasets; trained and compared ML models (1300+ patient data)
+            \item Integrated Gemini API for medical report uploads and AI-powered explanations using Gemini 2.5
+            \item Built healthcare web app with CVD risk prediction, interactive health history graphs, and secure file management
+        \end{highlights}
+    \end{onecolentry}
+
+    \section{Projects}
+    
+    \begin{twocolentry}{
+        \textit{\href{https://github.com/ASN-cmd/Swabhav360}{github.com/ASN-cmd/Swabhav360}}
+    }
+        \textbf{Swabhav360 -- Impact Tracking Platform for SMI}
+    \end{twocolentry}
+    
+    \vspace{0.10 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Developing full-stack React Native mobile app to track child development, coach inputs, and volunteer activities
+            \item Implemented gamified elements, real-time analytics, and secure user roles
+            \item Built features including dashboards, leaderboards, and role-based access for nationwide deployment
+            \item \textbf{Tools:} React Native, Node.js, PostgreSQL
+        \end{highlights}
+    \end{onecolentry}
+
+    \vspace{0.2 cm}
+
+    \begin{twocolentry}{
+        \textit{\href{https://github.com/ASN-cmd/Secure-Chat-App}{github.com/ASN-cmd/Secure-Chat-App}}
+    }
+        \textbf{Secure Chat Application}
+    \end{twocolentry}
+    
+    \vspace{0.10 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Developed full-stack chat platform enabling real-time encrypted communication between users
+            \item Implemented end-to-end RSA encryption (2048-bit) with dynamic key exchange
+            \item Built responsive React interface with real-time message updates; tested with up to 10 concurrent users
+            \item \textbf{Tools:} Python, RSA Encryption, React, CI/CD
+        \end{highlights}
+    \end{onecolentry}
+
+    \vspace{0.2 cm}
+
+    \begin{twocolentry}{
+        \textit{\href{https://github.com/ASN-cmd/Portfolio}{github.com/ASN-cmd/Portfolio}}
+    }
+        \textbf{Personal Portfolio Website}
+    \end{twocolentry}
+    
+    \vspace{0.10 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Designed and deployed fully responsive portfolio using React and Framer Motion
+            \item Showcased 3+ projects with detailed case studies, GitHub links, and live demos
+            \item Integrated GitHub Actions for automated deployment and continuous integration
+            \item \textbf{Tools:} React, Framer Motion, GitHub Actions - CI/CD
+        \end{highlights}
+    \end{onecolentry}
+
+    \section{Certifications}
+    
+    \begin{twocolentry}{
+        \textit{2024 -- 2025}
+    }
+        \textbf{Certificate of Completion -- IISER Mohali}
+        
+        \textit{AI-based Cardiovascular Risk Prediction Project}
+    \end{twocolentry}
+    
+    \vspace{0.10 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Recognized contributions in model development and system integration for year-long ML project
+        \end{highlights}
+    \end{onecolentry}
+
+    \vspace{0.2 cm}
+
+    \begin{twocolentry}{
+        \textit{2024}
+    }
+        \textbf{Core Java (JSE) Programming Course}
+        
+        \textit{Pinnacle Tech Programs (45 hours)}
+    \end{twocolentry}
+
+    \vspace{0.2 cm}
+
+    \begin{twocolentry}{
+        \textit{2024}
+    }
+        \textbf{Deep Learning - Layers of Learning}
+        
+        \textit{RVTechlearn \& PNT Academy (18 hours)}
+    \end{twocolentry}
+
+    \section{Publications}
+    
+    \begin{twocolentry}{
+        \textit{2024}
+    }
+        \textbf{WERK - An Online Job Portal}
+        
+        \textit{International Journal of Research and Publication Reviews (IJRPR)}
+    \end{twocolentry}
+    
+    \vspace{0.10 cm}
+    \begin{onecolentry}
+        \begin{highlights}
+            \item Published comprehensive research on online job portal development and implementation
+        \end{highlights}
+    \end{onecolentry}
+
+    \section{Technical Skills}
+    \begin{onecolentry}
+        \textbf{Languages:} Java, Python, JavaScript, HTML, CSS, SQL \\
+        \textbf{Frameworks \& Technologies:} React, Node.js, Next.js, Express, Tailwind CSS \\
+        \textbf{Machine Learning:} Random Forest, XGBoost, TensorFlow, Scikit-learn \\
+        \textbf{Databases:} MongoDB, MySQL, PostgreSQL \\
+        \textbf{Cloud \& Tools:} AWS, Git \\
+        \textbf{Computer Vision:} YOLO, ByteTrack, OpenCV
+    \end{onecolentry}
 
 \end{document}
