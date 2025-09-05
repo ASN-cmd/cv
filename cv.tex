@@ -21,17 +21,6 @@
 \setlength{\columnsep}{-1pt}
 \input{glyphtounicode}
 
-%----------FONT OPTIONS----------
-% sans-serif
-% \usepackage[sfdefault]{FiraSans}
-% \usepackage[sfdefault]{roboto}
-% \usepackage[sfdefault]{noto-sans}
-% \usepackage[default]{sourcesanspro}
-
-% serif
-% \usepackage{CormorantGaramond}
-% \usepackage{charter}
-
 \pagestyle{fancy}
 \fancyhf{} % clear all header and footer fields
 \fancyfoot{}
@@ -53,7 +42,7 @@
 
 % Sections formatting
 \titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large\bfseries
+  \vspace{-6pt}\scshape\raggedright\large\bfseries
 }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
 % Ensure that generate pdf is machine readable/ATS parsable
@@ -67,24 +56,11 @@
   }
 }
 
-\newcommand{\classesList}[4]{
-    \item\small{
-        {#1 #2 #3 #4 \vspace{-2pt}}
-  }
-}
-
 \newcommand{\resumeSubheading}[4]{
   \vspace{-2pt}\item
     \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & \textbf{\small #2} \\
       \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-7pt}
-}
-
-\newcommand{\resumeSubSubheading}[2]{
-    \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \textit{\small#1} & \textit{\small #2} \\
     \end{tabular*}\vspace{-7pt}
 }
 
@@ -95,14 +71,11 @@
     \end{tabular*}\vspace{-7pt}
 }
 
-\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
-
 \renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
-\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
 
 \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[itemsep=-1pt, parsep=0pt]}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
 
 %-------------------------------------------
@@ -123,11 +96,8 @@
 \section{Education}
   \resumeSubHeadingListStart
     \resumeSubheading
-      {Fr. C. Rodrigues Institute of Technology}{Vashi, Maharashtra}
-      {Bachelor of Engineering in Computer Engineering}{November 2022 -- Expected July 2026}
-      \resumeItemListStart
-        \resumeItem{CGPA: 9.20/10.0}
-      \resumeItemListEnd
+      {Fr. C. Rodrigues Institute of Technology}{Nov 2022 -- Jul 2026}
+      {Bachelor of Engineering in Computer Engineering, CGPA: 9.20/10.0}{Vashi, Maharashtra}
   \resumeSubHeadingListEnd
 
 %-----------EXPERIENCE-----------
@@ -135,119 +105,67 @@
   \resumeSubHeadingListStart
 
     \resumeSubheading
-      {IISER x Suraj Informatics}{Mohali, India - Remote}
-      {Project Intern}{July 2025 -- Expected June 2026}
+      {IISER x Suraj Informatics}{Jul 2025 -- Jun 2026}
+      {Project Intern}{Remote}
       \resumeItemListStart
-        \resumeItem{Developing a \textbf{YOLOv11-based vision system} with \textbf{ByteTrack} and \textbf{zone logic} to automate real-time \textbf{baggage counting}, reducing manual counting efforts by \textbf{$\sim$80\%}.}
-        \resumeItem{Implementing \textbf{anomaly detection} and \textbf{live monitoring} features, enabling reliable operation in \textbf{high-footfall areas}.}
+        \resumeItem{Developing \textbf{YOLOv11-based vision system} with \textbf{ByteTrack} for automated \textbf{baggage counting}, reducing manual efforts by \textbf{80\%}}
+        \resumeItem{Implementing \textbf{anomaly detection} and \textbf{live monitoring} for reliable operation in high-footfall areas}
       \resumeItemListEnd
 
     \resumeSubheading
-      {Sports Mentoring Infusion - NGO}{Mumbai, India - Remote}
-      {Full Stack Developer Intern}{June 2025 -- Expected November 2025}
+      {Sports Mentoring Infusion - NGO}{Jun 2025 -- Nov 2025}
+      {Full Stack Developer Intern}{Remote}
       \resumeItemListStart
-        \resumeItem{Have built and integrated \textbf{backend services} with \textbf{Node.js} and \textbf{PostgreSQL} for a \textbf{student and admin task management system}, reducing manual task allocation by \textbf{$\sim$70\%} for \textbf{100+ orphan students}.}
-        \resumeItem{Managed \textbf{APK builds} and \textbf{system integration} while adding \textbf{class management}, \textbf{assignments}, and \textbf{daily review} features, improving operational efficiency for \textbf{10+ coaches}.}
+        \resumeItem{Built \textbf{React Native app} and \textbf{Node.js/PostgreSQL} backend for student task management, reducing manual allocation by \textbf{70\%} for \textbf{100+ students}}
+        \resumeItem{Added \textbf{class management}, \textbf{assignments}, and \textbf{daily review} features, improving efficiency for \textbf{10+ coaches}}
       \resumeItemListEnd
 
     \resumeSubheading
-      {IISER Mohali}{Mohali, India - Remote}
-      {Project Intern}{July 2024 -- June 2025}
+      {IISER Mohali}{Jul 2024 -- Jun 2025}
+      {Project Intern}{Remote}
       \resumeItemListStart
-        \resumeItem{Processed and analyzed \textbf{4 cardiovascular datasets} (\textbf{5000+ patient records}) and trained multiple \textbf{ML models}, improving \textbf{CVD risk prediction accuracy} by \textbf{$\sim$15\%}.}
-        \resumeItem{Developed a \textbf{healthcare web app} with \textbf{risk prediction}, \textbf{health history visualization}, and \textbf{secure report uploads}, enabling \textbf{AI-based explanations} using \textbf{Gemini 2.5}.}
+        \resumeItem{Analyzed \textbf{4 cardiovascular datasets (5000+ records)} and trained \textbf{ML models}, improving \textbf{CVD risk prediction accuracy by 15\%}}
+        \resumeItem{Developed \textbf{healthcare web app} with risk prediction, health visualization, and \textbf{AI-based explanations using Gemini 2.5}}
       \resumeItemListEnd
   \resumeSubHeadingListEnd
-\vspace{-16pt}
-
 
 %-----------PROJECTS-----------
 \section{Projects}
-    \vspace{-5pt}
     \resumeSubHeadingListStart
-
       \resumeProjectHeading
-          {\textbf{Swabhav360 -- Impact Tracking Platform for SMI} $|$ \emph{React Native, Node.js, PostgreSQL}}{}
+          {\textbf{Swabhav360 -- Impact Tracking Platform} $|$ \emph{React Native, Node.js, PostgreSQL} \href{https://github.com/richiebthomas/smi-android-app}{\color{blue}[GitHub]}}{}
           \resumeItemListStart
-            \resumeItem{Built a \textbf{React Native mobile app} to track \textbf{child development}, \textbf{coach inputs}, and \textbf{volunteer activities}, reducing manual record-keeping by \textbf{$\sim$70\%}. [\href{https://github.com/richiebthomas/smi-android-app}{\color{blue}GitHub Link}]}
-            \resumeItem{Implemented \textbf{dashboards}, \textbf{leaderboards}, and \textbf{role-based access} to enable data-driven tracking for \textbf{100+ students and 15+ coaches}.}
+            \resumeItem{Built mobile app to track child development and volunteer activities, reducing manual record-keeping by \textbf{70\%} for \textbf{100+ students}}
           \resumeItemListEnd
-          \vspace{-13pt}
 
       \resumeProjectHeading
-          {\textbf{Secure Chat Application} $|$ \emph{Python, RSA Encryption, React}}{}
+          {\textbf{Secure Chat Application} $|$ \emph{Python, RSA Encryption, React} \href{https://github.com/ASN-cmd/rsa-secure-chat}{\color{blue}[GitHub]}}{}
           \resumeItemListStart
-            \resumeItem{Created a \textbf{full-stack chat platform} with \textbf{real-time encrypted messaging}, minimizing reliance on unsecured channels. [\href{https://github.com/ASN-cmd/rsa-secure-chat}{\color{blue}GitHub Link}]}
-            \resumeItem{Designed a \textbf{React interface} with \textbf{RSA key exchange algorithm} and deployed frontend/backend using CI/CD pipelines, supporting \textbf{10+ concurrent users}.}
+            \resumeItem{Created full-stack chat platform with \textbf{real-time encrypted messaging} and \textbf{RSA key exchange}, supporting \textbf{10+ concurrent users}}
           \resumeItemListEnd 
-          \vspace{-13pt}
-
     \resumeSubHeadingListEnd
-  \vspace{8pt}
 
-%-----------LEADERSHIP-----------
-\section{Leadership}
+%-----------LEADERSHIP & CERTIFICATIONS-----------
+\section{Leadership \& Certifications}
   \resumeSubHeadingListStart
+    \resumeSubheading
+      {Computer Society of India (CSI) FCRIT -- Technical Head}{Jul 2024 -- Jun 2025}
+      {Deployed CSI website on college domain, coordinated hackathon development}{Navi Mumbai}
 
     \resumeSubheading
-      {Computer Society of India (CSI) FCRIT}{Navi Mumbai, India}
-      {Technical Head}{July 2024 -- June 2025}
-      \resumeItemListStart
-        \resumeItem{Deployed and maintained the \textbf{CSI website} on the \textbf{college domain}, updating \textbf{event} and \textbf{team information} to reduce manual updates by \textbf{$\sim$60\%}.}
-        \resumeItem{Coordinated in developing the \textbf{hackathon problem statement page} with detailed \textbf{problem statements}, improving \textbf{information accessibility} for participants.}
-      \resumeItemListEnd
-
+      {IISER Mohali Certificate -- AI-based CVD Risk Prediction}{2024 -- 2025}
+      {Core Java Programming (45hrs) -- Pinnacle Tech | Deep Learning (18hrs) -- RVTechlearn}{Certified}
   \resumeSubHeadingListEnd
-
-%-----------CERTIFICATIONS-----------
-\section{Certifications}
-    \resumeSubHeadingListStart
-
-      \resumeSubheading
-        {Certificate of Completion -- IISER Mohali}{IISER Mohali}
-        {AI-based Cardiovascular Risk Prediction Project}{2024 -- 2025}
-        \resumeItemListStart
-          \resumeItem{Recognized contributions in model development and system integration for year-long ML project. [\href{https://drive.google.com/file/d/1tXeZ835o0nwGwzxtc9oHEuiaVe_46iDa/view?usp=sharing}{\color{blue}View Certificate}]}
-        \resumeItemListEnd
-
-      \resumeSubheading
-        {Core Java (JSE) Programming Course}{Pinnacle Tech Programs}
-        {45 hours of intensive training}{2024}
-        \resumeItemListStart
-          \resumeItem{Comprehensive training in Java fundamentals and object-oriented programming. [\href{https://drive.google.com/file/d/1Lf2cOTG3Nwv9vOYOVXjcn3a3jWpDPUBj/view?usp=sharing}{\color{blue}View Certificate}]}
-        \resumeItemListEnd
-
-      \resumeSubheading
-        {Deep Learning - Layers of Learning}{RVTechlearn \& PNT Academy}
-        {18 hours Industrial Training and Winter Internship}{2024}
-        \resumeItemListStart
-          \resumeItem{Hands-on experience with deep learning frameworks and neural network architectures. [\href{https://drive.google.com/file/d/1LZmzLzCd4g8qe_HMNEf_ERyJBaHTfGbe/view?usp=sharing}{\color{blue}View Certificate}]}
-        \resumeItemListEnd
-
-    \resumeSubHeadingListEnd
-
-%-----------PUBLICATIONS-----------
-\section{Publications}
-    \resumeSubHeadingListStart
-      \resumeSubheading
-        {WERK - An Online Job Portal}{International Journal of Research and Publication Reviews (IJRPR)}
-        {Research Paper Publication}{2024}
-        \resumeItemListStart
-          \resumeItem{Published comprehensive research on online job portal development and implementation}
-        \resumeItemListEnd
-    \resumeSubHeadingListEnd
 
 %-----------PROGRAMMING SKILLS-----------
 \section{Technical Skills}
  \begin{itemize}[leftmargin=0.15in, label={}]
     \small{\item{
      \textbf{Languages}{: Python, Java, JavaScript, HTML, CSS, SQL} \\
-     \textbf{Frontend}{: React.js, Node.js, React Native, Tailwind CSS} \\
-     \textbf{Backend}{: Random Forest, XGBoost, TensorFlow, Scikit-learn} \\
-     \textbf{Databases}{: MongoDB, MySQL, PostgreSQL, Firestore} \\
-     \textbf{DevOps}{: AWS, CI/CD, Git, Postman, Docker}
+     \textbf{Frontend/Mobile}{: React.js, React Native, Node.js, Tailwind CSS} \\
+     \textbf{ML/Backend}{: TensorFlow, Scikit-learn, XGBoost, Random Forest} \\
+     \textbf{Databases \& DevOps}{: PostgreSQL, MongoDB, MySQL, AWS, Docker, Git}
     }}
  \end{itemize}
- \vspace{-16pt}
 
 \end{document}
