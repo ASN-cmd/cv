@@ -17,6 +17,9 @@
 \usepackage{tabularx}
 \usepackage{fontawesome5}
 \usepackage{multicol}
+\usepackage{setspace} % ✅ added for line spacing
+\setstretch{1.05}     % ✅ improves readability
+
 \setlength{\multicolsep}{-3.0pt}
 \setlength{\columnsep}{-1pt}
 \input{glyphtounicode}
@@ -40,35 +43,35 @@
 \raggedright
 \setlength{\tabcolsep}{0in}
 
-% Sections formatting - reduced spacing
+% Sections formatting - ✅ relaxed spacing
 \titleformat{\section}{
-  \vspace{-6pt}\scshape\raggedright\large\bfseries
-}{}{0em}{}[\color{black}\titlerule \vspace{-6pt}]
+  \vspace{-2pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-4pt}]
 
 % Ensure that generate pdf is machine readable/ATS parsable
 \pdfgentounicode=1
 
 %-------------------------
-% Custom commands with tighter spacing
+% Custom commands with better spacing
 \newcommand{\resumeItem}[1]{
   \item\small{
-    {#1 \vspace{-1pt}}
+    {#1 \vspace{2pt}} % ✅ gives breathing room
   }
 }
 
 \newcommand{\resumeSubheading}[4]{
-  \vspace{-3pt}\item
+  \vspace{2pt}\item % ✅ increased from -3pt
     \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & \textbf{\small #2} \\
       \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-8pt}
+    \end{tabular*}\vspace{-4pt} % ✅ was -8pt
 }
 
 \newcommand{\resumeProjectHeading}[2]{
     \item
     \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
       \small#1 & \textbf{\small #2}\\
-    \end{tabular*}\vspace{-8pt}
+    \end{tabular*}\vspace{-4pt} % ✅ was -8pt
 }
 
 \renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
@@ -76,8 +79,8 @@
 
 \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}[itemsep=-2pt, parsep=0pt]}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-6pt}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[itemsep=2pt, parsep=0pt]} % ✅ was -2pt
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2pt}} % ✅ was -6pt
 
 %-------------------------------------------
 %%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -92,7 +95,7 @@
     \href{https://github.com/ASN-cmd}{\raisebox{-0.2\height}\faGithub\ github.com/aryannair}
     \vspace{-10pt}
 \end{center}
-  
+
 %-----------EDUCATION-----------
 \section{Education}
   \resumeSubHeadingListStart
